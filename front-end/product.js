@@ -2,7 +2,9 @@
 
 let urlSearch = new URLSearchParams(window.location.search);
 let idTeddy = urlSearch.get("id");
- 
+
+console.log (idTeddy) 
+
 //FONCTION POUR RECUPERER UN TEDDY PAR SON ID UNIQUE
 function getTeddy(teddies, idTeddy) {
 
@@ -16,6 +18,7 @@ function createCard(myTeddy) {
     cardDiv.classList.add("card-body","bg-info", "rounded", "w-75", "mx-auto");
     let div = document.getElementById("card");
     div.appendChild(cardDiv);
+
 
 // CREATION DU CONTENU DE L'ELEMENT CARD (PRODUIT)
 
@@ -77,43 +80,8 @@ tedColor.addEventListener("change", function choiceColor() {
     buttonCard.setAttribute("type", "button");
     buttonCard.textContent = "Ajouter au panier"; 
     document.querySelector("button");
-    
-//ECOUTE DE L'EVENEMENT AU CLIC DU BOUTON ARTICLE AJOUTE      
-
-
-buttonCard.addEventListener("click", function(event) {
-       
-    let infoBear = localStorage.getItem("allCart"); 
-    let ted = JSON.parse(infoBear);
-
-// on ajoute les produits au localStorage à chaque sélection
-function addTed() { 
-   if(infoBear === null) {
-    
-        ted = [];
-        
-        console.log(ted);
-    }    
-     
-    ted.push({
-      _id: myTeddy._id,
-      name: myTeddy.name,
-      colors: tedColor.value,
-      price: myTeddy.price/100,
-    
-    });
 }
-addTed()
-//on stocke les produits ajoutés au localStorage pour le panier
 
-  localStorage.setItem("allCart", JSON.stringify(ted));
-  console.log("allCart", ted);
-  alert("Article ajouté au panier !");
-  event.preventDefault();
-    })
-};
-
-let teddies;
 // RECUPERATION DE L'URL AVEC ID
 const getOneTeddy = async function () {
     try {
