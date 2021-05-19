@@ -102,7 +102,7 @@ function addTed() {
       _id: myTeddy._id,
       name: myTeddy.name,
       colors: tedColor.value,
-      price: myTeddy.price/100,
+      price: myTeddy.price/10,
     
     });
 }
