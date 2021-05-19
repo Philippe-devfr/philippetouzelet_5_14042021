@@ -24,7 +24,7 @@ function createCard(myTeddy) {
 
     let imgCard = document.createElement("img");
     cardDiv.appendChild(imgCard);
-    imgCard.classList.add("card-image-top", "rounded-circle", "w-25", "img-fluid");
+    imgCard.classList.add("card-image-top", "rounded", "w-50", "img-fluid");
     imgCard.src = myTeddy.imageUrl;
 
     let titleCard = document.createElement("h3");
@@ -76,11 +76,45 @@ tedColor.addEventListener("change", function choiceColor() {
 
     let buttonCard = document.createElement("button");
     cardDiv.appendChild(buttonCard);
-    buttonCard.classList.add("addToCart", "btn", "btn-dark", "btn-block", "mt-5");
+    buttonCard.classList.add("addToCart", "btn", "btn-dark", "btn-block", "ms-5");
     buttonCard.setAttribute("type", "button");
     buttonCard.textContent = "Ajouter au panier"; 
     document.querySelector("button");
+
+//ECOUTE DE L'EVENEMENT AU CLIC DU BOUTON ARTICLE AJOUTE      
+
+
+buttonCard.addEventListener("click", function(event) {
+       
+    let infoBear = localStorage.getItem("allCart"); 
+    let ted = JSON.parse(infoBear);
+
+// on ajoute les produits au localStorage à chaque sélection
+function addTed() { 
+   if(infoBear === null) {
+    
+        ted = [];
+        
+        console.log(ted);
+    }    
+     
+    ted.push({
+      _id: myTeddy._id,
+      name: myTeddy.name,
+      colors: tedColor.value,
+      price: myTeddy.price/100,
+    
+    });
 }
+addTed()
+//on stocke les produits ajoutés au localStorage pour le panier
+
+  localStorage.setItem("allCart", JSON.stringify(ted));
+  console.log("allCart", ted);
+  alert("Article ajouté au panier !");
+  event.preventDefault();
+    })
+};
 
 // RECUPERATION DE L'URL AVEC ID
 const getOneTeddy = async function () {

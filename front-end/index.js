@@ -24,6 +24,7 @@ function createCard(teddies) {
     for(let i = 0; i < teddies.length; i++) {
             
         let cardDiv = document.createElement("div");
+        cardDiv.classList.add("d-flex","justify-content-around","col-xs-4", "card-mb-4", "card-body","bg-info", "rounded", "w-md-50","mx-auto", "xs-3", "sm-3", "mb-3","flex-column");
         let div = document.getElementById("card");
         div.appendChild(cardDiv);
     
@@ -31,20 +32,25 @@ function createCard(teddies) {
     
         let imgCard = document.createElement("img");
         cardDiv.appendChild(imgCard);
+        imgCard.classList.add("card-image-top","img-fluid", "w-25", "rounded");
         imgCard.src = teddies[i].imageUrl;
     
         let titleCard = document.createElement("h3");
         cardDiv.appendChild(titleCard);
+        titleCard.classList.add("container", "card-title", "title", "mt-auto", "mb-auto", "pl-50");
         titleCard.textContent = teddies[i].name;
     
         let priceCard = document.createElement("p");
         cardDiv.appendChild(priceCard);
+        priceCard.classList.add("container", "card-text", "mt-auto", "mb-auto");
         priceCard.textContent = (teddies[i].price/10) + "€";
     
         // BOUTON VERS PAGE PRODUIT  
     
         let buttonCard = document.createElement("button");
         cardDiv.appendChild(buttonCard);
+        buttonCard.classList.add("btn", "btn-dark", "mt-auto", "mb-auto");
+        buttonCard.setAttribute("type", "button");
         buttonCard.textContent = "En savoir plus"; 
         
         //FONCTION DE RECUPERATION DE L'URL PAGE PRODUIT     
