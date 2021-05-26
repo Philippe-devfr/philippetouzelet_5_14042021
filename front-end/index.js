@@ -2,13 +2,13 @@ const getAllTeddies = async function () {
     try {
         let response = await fetch("http://localhost:3000/api/teddies", {
         mode: "cors"
-})
+        })
         if (response.ok) {
             let teddies = await response.json();
                 createCard(teddies);
         } else {
         console.error("Error", response.status)
-    }
+        }
 }   catch (e) {
     console.log(e);
 }
@@ -17,9 +17,10 @@ const getAllTeddies = async function () {
 getAllTeddies()
 
 // CREATION DE 5 CARDS POUR CHAQUE OURSON
+
 function createCard(teddies) {
 
-    // UNE BOUCLE FOR POUR ITERER 5 CARDS PRINCIPALES
+// UNE BOUCLE FOR POUR ITERER 5 CARDS PRINCIPALES
     
     for(let i = 0; i < teddies.length; i++) {
             

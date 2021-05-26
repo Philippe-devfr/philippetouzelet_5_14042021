@@ -5,11 +5,13 @@ let idTeddy = urlSearch.get("id");
 
 console.log (idTeddy) 
 
-//FONCTION POUR RECUPERER UN TEDDY PAR SON ID UNIQUE
+// FONCTION POUR RECUPERER UN TEDDY PAR SON ID UNIQUE
+
 function getTeddy(teddies, idTeddy) {
 
     let myTeddy = teddies.find(teddies => teddies["_id"] == idTeddy);
-}  
+}
+
 // CREATION DE LA CARD PRINCIPALE CONTENANT LE PRODUIT
 
 function createCard(myTeddy) {
@@ -18,7 +20,6 @@ function createCard(myTeddy) {
     cardDiv.classList.add("card-body","bg-info", "rounded", "w-75", "mx-auto");
     let div = document.getElementById("card");
     div.appendChild(cardDiv);
-
 
 // CREATION DU CONTENU DE L'ELEMENT CARD (PRODUIT)
 
@@ -53,7 +54,7 @@ function createCard(myTeddy) {
     cardDiv.appendChild(list);
     let allColors = myTeddy.colors; 
 
-//BOUCLE POUR CREER LES OPTIONS COULEUR
+// BOUCLE POUR CREER LES OPTIONS COULEUR
 
 for(let i = 0; i < allColors.length; i++) {
 
@@ -81,8 +82,7 @@ tedColor.addEventListener("change", function choiceColor() {
     buttonCard.textContent = "Ajouter au panier"; 
     document.querySelector("button");
 
-//ECOUTE DE L'EVENEMENT AU CLIC DU BOUTON ARTICLE AJOUTE      
-
+// ECOUTE DE L'EVENEMENT AU CLIC DU BOUTON ARTICLE AJOUTE      
 
 buttonCard.addEventListener("click", function(event) {
        
@@ -90,8 +90,9 @@ buttonCard.addEventListener("click", function(event) {
     let ted = JSON.parse(infoBear);
 
 // on ajoute les produits au localStorage à chaque sélection
+
 function addTed() { 
-   if(infoBear === null) {
+    if(infoBear === null) {
     
         ted = [];
         
@@ -99,21 +100,21 @@ function addTed() {
     }    
      
     ted.push({
-      _id: myTeddy._id,
-      name: myTeddy.name,
-      colors: tedColor.value,
-      price: myTeddy.price/10,
-    
+        _id: myTeddy._id,
+        name: myTeddy.name,
+        colors: tedColor.value,
+        price: myTeddy.price/10,
     });
 }
 addTed()
-//on stocke les produits ajoutés au localStorage pour le panier
 
-  localStorage.setItem("allCart", JSON.stringify(ted));
-  console.log("allCart", ted);
-  alert("Article ajouté au panier !");
-  event.preventDefault();
-    })
+// on stocke les produits ajoutés au localStorage pour le panier
+
+    localStorage.setItem("allCart", JSON.stringify(ted));
+    console.log("allCart", ted);
+    alert("Article ajouté au panier !");
+    event.preventDefault();
+        })
 };
 
 // RECUPERATION DE L'URL AVEC ID
@@ -124,7 +125,7 @@ const getOneTeddy = async function () {
     })
         if (response.ok) {
             let teddies = await response.json();
-               createCard(teddies);
+                createCard(teddies);
               
         } else {
         console.error("Error", response.status)
